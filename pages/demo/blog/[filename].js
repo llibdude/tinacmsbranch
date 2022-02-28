@@ -71,6 +71,7 @@
             referrerPolicy="no-referrer"
           />
           {/* Marked CDN */}
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
           <script
             type="text/javascript"
             crossOrigin="anonymous"
