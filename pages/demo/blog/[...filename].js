@@ -112,7 +112,7 @@
   
   export const getStaticProps = async ({ params }) => {
     console.log('PARMAS', params)
-    const variables = { relativePath: `${params.filename}.md` }
+    const variables = { relativePath: `${params.filename[0]}.md` }
     let data = {}
     try {
       data = await staticRequest({
@@ -142,7 +142,6 @@
     }
   };
   
-  /*
   export const getStaticPaths = async () => {
     const postsListData = (await staticRequest({
       query: gql`
@@ -167,7 +166,7 @@
       fallback: false,
     };
   };
-  */
+ /*
   export const getStaticPaths = async () => {
     const paths = []
     return {
@@ -175,6 +174,7 @@
       fallback: 'blocking'
     }
   }
+  */
   
   export default BlogPage;
   
