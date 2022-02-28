@@ -111,6 +111,7 @@
   };
   
   export const getStaticProps = async ({ params }) => {
+    console.log('PARMAS', params)
     const variables = { relativePath: `${params.filename}.md` }
     let data = {}
     try {
@@ -122,6 +123,12 @@
       // swallow errors related to document creation
     }
 
+    if (!data) {
+      return {
+        notFound: true
+      }
+    }
+
     console.log('YOOOOO GETSTATICPROPS',  {
       variables,
       data})
@@ -129,11 +136,13 @@
       props: {
         variables,
         data,
-        //myOtherProp: 'some-other-data',
+        // Incremental static regeneration so we can preview new blogs in sanity and not need to rebuild on every edit
+        revalidate: 5
       },
     }
   };
   
+  /*
   export const getStaticPaths = async () => {
     const postsListData = (await staticRequest({
       query: gql`
@@ -158,6 +167,14 @@
       fallback: false,
     };
   };
+  */
+  export const getStaticPaths = async () => {
+    const paths = []
+    return {
+      paths,
+      fallback: 'blocking'
+    }
+  }
   
   export default BlogPage;
   
