@@ -161,7 +161,7 @@
   
     return {
       paths: postsListData.getPostsList.edges.map((post) => ({
-        params: { filename: post.node.sys.filename },
+        params: { filename: [post.node.sys.filename] },
       })),
       fallback: false,
     };
