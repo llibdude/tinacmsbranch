@@ -122,6 +122,9 @@
       // swallow errors related to document creation
     }
 
+    console.log('YOOOOO GETSTATICPROPS',  {
+      variables,
+      data})
     return {
       props: {
         variables,
